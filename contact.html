@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        html, body {
+            height: 100%; /* Ensure both html and body cover full height */
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh; /* Ensure body covers the full height */
+            background-image: url('Farming.jpg'); /* Replace with your forest image URL */
+            background-size: cover; /* Ensures the background covers the entire page */
+            background-position: center; /* Centers the image */
+            background-attachment: fixed; /* Keeps the background fixed while scrolling */
+            color: #fff; /* Default color for body text */
+        }
+
+        .container {
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space out children */
+            width: 100%;
+            padding: 20px;
+            align-items: center; /* Align items vertically */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%; /* Full width for the header */
+            align-items: center; /* Center items vertically */
+        }
+
+        .logo {
+            flex: 1; /* Allow logo to grow */
+        }
+
+        .slogan {
+            flex: 2; /* Allow slogan to take more space */
+            text-align: center; /* Center align the slogan */
+            margin: 0; /* Remove default margin */
+        }
+
+        .notification-icon{
+            flex: 0; /* Allow icons to grow */
+            text-align: right; /* Align icons to the right */
+        }
+
+        .left-menu {
+            width: 100%;
+            background-color: rgba(248, 248, 248, 0); /* Light grey with 90% transparency */
+            padding: 10px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .left-menu li {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .left-menu a {
+            text-decoration: none;
+            color: #000000; /* Set left menu text color */
+            font-size: 20px;
+            padding: 15px;
+            background-color: #ac9e23;
+            border-radius: 6px;
+            display: block;
+            text-align: center;
+        }
+
+        .left-menu a:hover {
+            background-color: #d0d0d0;
+        }
+
+        .content-section {
+            display: flex; /* Use flexbox for content section */
+            flex-basis: 60%; /* Set width for form section */
+            justify-content: space-between;
+        }
+
+        .form-section,
+        .address-section {
+            flex: 1; /* Allow sections to grow equally */
+            margin: 0 10px; /* Add horizontal margin */
+        }
+
+        h2 {
+            text-transform: uppercase;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .social-links img {
+            display: block;
+            width: 30px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">
+            <img src="farmer_logo.jpeg" alt="Farmer Logo" style="max-height: 100px;">
+        </div>
+        <h1 class="slogan">Harvesting Quality, Cultivating Community</h1>
+        <div class="notification-icon">🔔</div>
+    </header>
+</div>
+
+<div class="container">
+    <nav>
+        <aside class="left-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="become_vendor.html">Become a Vendor</a></li>
+            </ul>
+        </aside>
+    </nav>
+    <section class="content-section">
+        <div class="form-section">
+            <h2>How Can We Help?</h2>
+            <input type="text" placeholder="Name" required>
+            <input type="text" placeholder="Email" required>
+            <textarea placeholder="Message" required></textarea>
+            <button>Submit</button>
+        </div>
+        <div class="address-section">
+            <h2>Address</h2>
+            <p>123 Main Street, City, Country</p>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <div class="social-section">
+        <h2>Follow Us</h2>
+        <div class="social-links">
+            <img src="fb_logo.png" alt="Facebook">
+            <img src="twitter_logo.png" alt="Twitter">
+            <img src="insta_logo.png" alt="Instagram">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

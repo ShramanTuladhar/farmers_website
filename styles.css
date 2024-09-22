@@ -1,0 +1,319 @@
+:root{ --main-color: white;
+   --bg-color:white ;
+   --text-color:black;
+   --action-color:green;
+}
+html, body {
+    height: 100%; /* Ensure both html and body cover full height */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header, .left-menu, .right-sidebar,footer {
+    background-color: var(--action-color);
+    position: relative; /* Position relative for stacking context */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #333; /* Dark color for header text */
+}
+
+/* Rest of your styles remain unchanged */
+
+.logo img {
+    max-inline-size: 100px; /* Style the logo image */
+}
+
+.cart-icon {
+    font-size: 30px;
+}
+
+.slogan {
+    text-align: center;
+    font-size: 4em; /* Adjust the size as needed */
+    font-weight: bold;
+    color: hwb(267 6% 55%); /* Color for the text */
+    margin: 20px 0; /* Spacing above and below */
+    font-family: 'Brush Script MT', cursive; /* Change to your preferred font */
+}
+
+.main-content {
+    display: flex;
+    height: calc(100vh - 40px); /* Full height minus header */
+    color: #333; /* Dark color for main content text */
+}
+
+.left-menu {
+    width: 20%;
+    background-color: rgba(248, 248, 248, 0); /* Light grey with 90% transparency */
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.left-menu li {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.left-menu a {
+    text-decoration: none;
+    color: #000000; /* Set left menu text color */
+    font-size: 20px;
+    padding: 15px;
+    background-color: #ac9e23;
+    border-radius: 6px;
+    display: block;
+    text-align: center;
+}
+
+.left-menu a:hover {
+    background-color: #d0d0d0;
+}
+
+/* Rest of your styles remain unchanged */
+
+        /* Dropdown styling */
+        .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: #f0f0f0; border: 1px solid #ccc; width: 100%; z-index: 1; }
+        .dropdown a { padding: 10px; text-align: left; font-size: 18px; }
+        .dropdown a:hover { background-color: #d0d0d0; }
+
+        .left-menu li:hover .dropdown { display: block; }
+
+        .center-content { width: 80%; padding: 0 20px; display: flex; flex-direction: column; align-items: center; }
+
+        /* Styling for the large image in the center */
+        .large-image { width: 100%; max-width: 500px; height: auto; margin-bottom: 20px; }
+
+        /* Featured products below the large image */
+        .featured-products { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+        .featured-products img { width: 100%; max-width: 200px; }
+
+        /* Right sidebar styles */
+        .right-sidebar {
+            width: 20%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(211, 185, 42, 0.9); /* Light grey with 90% transparency */
+        }
+        .notification-icon {
+    font-size: 100px; /* Adjust this value for a larger icon */
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+        .search-button {
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .reviews,
+        .reviews-blogs {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.reviews-blogs h2 {
+    font-size: 36px; /* Adjust as needed for a bold, large heading */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.review {
+    font-size: 18px; /* Size of the reviews text */
+    margin-bottom: 15px;
+    color: rgb(0, 0, 0);
+}
+
+.stars {
+    color: gold; /* Set the star color to gold */
+    font-size: 24px; /* Adjust the size of the stars */
+    margin-left: 10px; /* Adds space between review text and stars */
+}
+        .login-signup {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .login-button,
+        .signup-button {
+            padding: 15px;
+            font-size: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-button { background-color: #007BFF; color: white; }
+        .signup-button { background-color: #28a745; color: white; }
+
+        footer {
+            background-color: rgba(248, 248, 248, 0.1); /* Light grey with 90% transparency */
+            padding: 40px; /* Increased padding for a larger footer */
+            text-align: center;
+            border-top: 2px solid #ccc; /* Adding a border at the top */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column; /* Stacking elements vertically */
+            align-items: center;
+        }
+
+        .footer-links {
+            margin: 20px 0; /* Increased spacing between links */
+        }
+
+        .footer-links a {
+            margin: 0 20px; /* Space between links */
+            text-decoration: none;
+            color: #eeeeee; /* Darker link color */
+            font-weight: bold; /* Bold links */
+            transition: color 0.3s; /* Smooth color transition */
+            font-size: 30px;
+            background-color: #000000;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline; /* Underline on hover */
+            color: #007BFF; /* Change color on hover */
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center; /* Center the social login icons */
+            align-items: center;
+            margin-top: 20px; /* Increased spacing above social icons */
+        }
+
+        .social-login img {
+            width: 45px; /* Larger icons */
+            height: 45px; /* Larger icons */
+            margin: 0 15px; /* Space between icons */
+            transition: transform 0.3s; /* Smooth scaling transition */
+        }
+
+        .social-login img:hover {
+            transform: scale(1.1); /* Scale up icons on hover */
+        }
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); /* Dark overlay */
+    backdrop-filter: blur(5px); /* Adds a blurred effect to the background */
+    transition: all 0.5s ease-in-out; /* Smooth transition for modal */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Fancy gradient */
+    margin: 5% auto; 
+    padding: 40px;
+    border-radius: 20px;
+    width: 50%; /* Make the modal larger */
+    max-width: 800px; /* Cap the width for larger screens */
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2); /* Adds a soft shadow */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animation for modal fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Input and Button Styling */
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0 20px 0;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+}
+
+.modal-content input:focus {
+    background: #e0e0e0;
+    outline: none;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0px 4px 12px rgba(0, 123, 255, 0.4); /* Fancy button shadow */
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 6px 16px rgba(0, 123, 255, 0.6); /* Stronger shadow on hover */
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.2); /* Fancy hover effect */
+}
+
+/* Form Labels */
+.modal-content label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Responsive Design for smaller screens */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 80%;
+    }
+}
