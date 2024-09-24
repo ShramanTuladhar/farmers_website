@@ -88,45 +88,7 @@ $result = mysqli_query($conn, $query);
 
     <!-- Add this script for modal behavior and toggling between forms -->
     <script>
-        var loginModal = document.getElementById("loginModal");
-        var loginForm = document.getElementById("loginForm");
-        var signupForm = document.getElementById("signupForm");
 
-        // Show the login modal when "Add to Cart" is pressed by a non-logged-in user
-        function openLoginModal() {
-            loginModal.style.display = "block";
-            loginForm.style.display = "block"; // Show login form by default
-            signupForm.style.display = "none"; // Hide signup form by default
-        }
-
-        // Toggle between Login and Signup forms
-        function toggleModal() {
-            if (loginForm.style.display === "block") {
-                loginForm.style.display = "none";
-                signupForm.style.display = "block";
-            } else {
-                loginForm.style.display = "block";
-                signupForm.style.display = "none";
-            }
-        }
-
-        // Close modals when clicking on the close button or outside the modal
-        function closeModals() {
-            loginModal.style.display = "none";
-        }
-
-        // Close modal when clicking outside of it
-        window.onclick = function (event) {
-            if (event.target == loginModal) {
-                closeModals();
-            }
-        }
-
-        // Example function to handle "Add to Cart" functionality
-        function addToCart(productId) {
-            // Implement your add-to-cart logic here, such as sending an AJAX request to the server
-            console.log("Product added to cart:", productId);
-        }
     </script>
 </body>
 

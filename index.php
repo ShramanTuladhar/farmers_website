@@ -1,3 +1,13 @@
+<?php
+// Connect to the database
+include 'config.php'; // Your database connection
+
+// Fetch all products from the database
+$query = "SELECT * FROM products";
+$result = mysqli_query($conn, $query);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,46 +22,33 @@
 <body>
     <?php include_once('header.php'); ?>
 
+
     <div class="main-content">
         <?php include_once('left.php'); ?>
 
         <section class="center-content">
             <img src="farmers.jpeg" alt="Large Central Image" class="large-image">
-            <h2>Featured Products</h2>
-            <div class="featured-products">
-                <div class="product-card">
-                    <img src="1.jpeg" alt="Product Name 1">
-                    <h2>Product Name 1</h2>
-                    <p>Description of product 1. This is a great product that you will love!</p>
-                    <p class="price">$19.99</p>
-                    <button class="add-to-cart" onclick="openLoginModal()">Add to Cart</button>
-                </div>
+            <div class="features">
 
-                <div class="product-card">
-                    <img src="2.jpeg" alt="Product Name 2">
-                    <h2>Product Name 2</h2>
-                    <p>Description of product 2. This product is very popular among customers!</p>
-                    <p class="price">$29.99</p>
-                    <button class="add-to-cart" onclick="openLoginModal()">Add to Cart</button>
-                </div>
+                <h2>Featured Products</h2>
+                <div class="featured-products">
 
-                <div class="product-card">
-                    <img src="3.jpeg" alt="Product Name 3">
-                    <h2>Product Name 3</h2>
-                    <p>Description of product 3. Don't miss out on this fantastic deal!</p>
-                    <p class="price">$24.99</p>
-                    <button class="add-to-cart" onclick="openLoginModal()">Add to Cart</button>
-                </div>
-
-                <div class="product-card">
-                    <img src="4.jpeg" alt="Product Name 4">
-                    <h2>Product Name 4</h2>
-                    <p>Description of product 4. A must-have for everyone!</p>
-                    <p class="price">$34.99</p>
-                    <button class="add-to-cart" onclick="openLoginModal()">Add to Cart</button>
+                    <?php
+                    // Loop through the products and display them
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                        <div class="product-card">
+                            <img src="<?php echo $row['image_path']; ?>" alt="<?php echo $row['name']; ?>">
+                            <h2><?php echo $row['name']; ?></h2>
+                            <p><?php echo $row['description']; ?></p>
+                            <p class="price">$<?php echo number_format($row['price'], 2); ?></p>
+                            <button class="add-to-cart" onclick="openLoginModal()">Add to Cart</button>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
-
         </section>
 
 
@@ -66,7 +63,8 @@
                 <h2 class="reviews-title">REVIEWS & BLOGS</h2>
                 <div class="review"><strong>John:</strong> Great products..really loved to talk to the producers
                     directly without needing to go to the wholesalers <span class="stars">★★★★★</span></div>
-                <div class="review"><strong>Jane:</strong> Pretty good service! <span class="stars">★★★★☆</span></div>
+                <div class="review"><strong>Jane:</strong> Pretty good service! <span class="stars">★★★★☆</span>
+                </div>
                 <div class="review"><strong>Kanchan:</strong> Been shopping here for a while and realized these are
                     actually the best products I have ever received from any markets just love it <span
                         class="stars">★★★★★</span></div>
@@ -92,9 +90,8 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
                 <button type="submit" name='signup'>Sign Up</button>
-                <p style="text-align: center;">Already have an account? <a href="javascript:void(0);"
-                        onclick="toggleModal()">Login</a></p>
             </form>
+
         </div>
     </div>
 
@@ -108,11 +105,19 @@
                 <label for="login-password">Password:</label>
                 <input type="password" id="login-password" name="password" required>
                 <button type="submit" name='login'>Login</button>
-                <p style="text-align: center;">Don't have an account? <a href="javascript:void(0);"
-                        onclick="toggleModal()">Sign Up</a></p>
+                <p style="text-align: center;">
+                    <a href="forgot_password.php" style="color: #007BFF; text-decoration: underline;">Forgot
+                        Password?</a>
+                </p>
+                <p style="text-align: center;">
+                    Don't have an account?
+                    <a href="javascript:void(0);" onclick="toggleModal()">Sign Up</a>
+                </p>
+
             </form>
         </div>
     </div>
+
 
     <!-- JavaScript for modal functionality -->
     <script scr="script.js">
