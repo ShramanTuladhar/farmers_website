@@ -22,12 +22,14 @@ if (!isset($_SESSION['admin_logged_in'])) {
     <h2>Welcome to the Admin Dashboard</h2>
     <p>Hello, Admin!</p>
 
-    <ul>
+    <ul class="dashboard">
         <li><a href="manage_products.php">Manage Products</a></li>
         <li><a href="manage_users.php">Manage Users</a></li>
         <li><a href="manage_orders.php">Manage Orders</a></li> <!-- Added Manage Orders -->
         <li><a href="manage_reviews.php">Manage Reviews</a></li> <!-- Added Manage Reviews -->
-        <li><a href="logout1.php">Logout</a></li>
+        <li><a href="manage_contactus.php">Manage ContactUs</a></li> <!-- Added Manage Contact Us -->
+        <li><a href="manage_vendor_requests.php">Manage Vendor </a></li> <!-- Added Manage Vendor Requests -->
+        <li><a href=" logout1.php">Logout</a></li>
     </ul>
 </body>
 

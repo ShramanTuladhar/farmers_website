@@ -59,14 +59,6 @@ p {
   color: red;
   font-size: 14px;
 }
-/* General body style */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  margin: 0;
-  padding: 0;
-}
-
 /* Admin Dashboard container */
 h2 {
   color: #343a40;
@@ -79,12 +71,16 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 20px 0;
-  text-align: center;
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  justify-content: center;
+  gap: 15px;
 }
 
 ul li {
-  display: inline-block;
-  margin: 0 15px;
+  flex: 1 1 18%; /* Flex-basis to take up about 18% of the row for 5 items */
+  max-width: 200px; /* Maximum width for each link */
+  text-align: center;
 }
 
 ul li a {
@@ -94,13 +90,15 @@ ul li a {
   padding: 10px 20px;
   border: 1px solid #007bff;
   border-radius: 5px;
+  display: inline-block;
+  width: 100%; /* Ensure the link takes the full width of the li */
+  text-align: center;
 }
 
 ul li a:hover {
   background-color: #007bff;
   color: white;
 }
-
 /* Container for dashboard content */
 .container {
   max-width: 1000px;

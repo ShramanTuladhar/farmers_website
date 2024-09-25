@@ -13,7 +13,7 @@
 
     <div class="main-content">
         <?php
-        include_once('left1.php');
+        include_once('left.php');
         ?>
         <section class="about-us">
             <h1>About Us</h1>

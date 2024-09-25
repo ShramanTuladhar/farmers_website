@@ -12,7 +12,7 @@
     <?php include_once('header.php'); ?>
 
     <div class="main-content">
-        <?php include_once('left1.php'); ?>
+        <?php include_once('left.php'); ?>
         <section class="contact-us">
             <h1>Contact Us</h1>
             <p>If you have any questions or comments, feel free to reach out to us using the form below, or visit us at

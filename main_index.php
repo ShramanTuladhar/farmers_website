@@ -8,6 +8,17 @@ include 'config.php'; // Your database connection
 // Fetch all products from the database
 $query = "SELECT * FROM products";
 $result = mysqli_query($conn, $query);
+
+// Fetch three distinct reviews from unique users
+$reviewsQuery = "
+    SELECT u.username, r.comment, r.rating
+    FROM reviews r
+    JOIN users u ON r.user_id = u.id
+    GROUP BY r.user_id
+    ORDER BY r.created_at DESC
+    LIMIT 3
+";
+$reviewsResult = mysqli_query($conn, $reviewsQuery);
 ?>
 
 <!DOCTYPE html>
@@ -55,23 +66,34 @@ $result = mysqli_query($conn, $query);
         </section>
 
         <aside class="right-sidebar">
-            <form action="/search" method="GET" style="margin-bottom: 20px; display: flex; align-items: center;">
-                <input type="text" name="query" placeholder="Search..." class="search-bar"
-                    style="flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 5px;">
-                <button type="submit"
-                    style="padding: 10px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">🔍</button>
+            <form action="search_results.php" method="GET" class="search-form">
+                <!-- Changed action to search_results.php -->
+                <div class="search-bar-container">
+                    <input type="text" name="query" placeholder="Search..." class="search-bar" />
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </form>
+
+
+
+
+
+
 
             <div class="reviews">
                 <h2 class="reviews-title">REVIEWS & BLOGS</h2>
-                <div class="review"><strong>John:</strong> Great products..really loved to talk to the producers
-                    directly without needing to go to the wholesalers <span class="stars">★★★★★</span>
-                </div>
-                <div class="review"><strong>Jane:</strong> Pretty good service! <span class="stars">★★★★☆</span>
-                </div>
-                <div class="review"><strong>Kanchan:</strong> Been shopping here for a while and realized these are
-                    actually the best products I have ever received from any markets just love it <span
-                        class="stars">★★★★★</span></div>
+                <?php
+                // Loop through the reviews and display them
+                while ($review = mysqli_fetch_assoc($reviewsResult)) {
+                    ?>
+                    <div class="review">
+                        <strong><?php echo $review['username']; ?>:</strong> <?php echo $review['comment']; ?>
+                        <span
+                            class="stars"><?php echo str_repeat('★', $review['rating']); ?><?php echo str_repeat('☆', 5 - $review['rating']); ?></span>
+                    </div>
+                <?php } ?>
             </div>
         </aside>
     </div>

@@ -23,7 +23,7 @@ $result = mysqli_query($conn, $query);
     <?php include_once('header.php'); ?>
 
     <div class="main-content">
-        <?php include_once('left.php'); ?>
+        <?php include_once('left1.php'); ?>
 
         <section class="center-content">
             <h1>Our Products</h1>
@@ -40,7 +40,10 @@ $result = mysqli_query($conn, $query);
                         <!-- Check if the user is logged in -->
                         <?php if (isset($_SESSION['user_id'])) { ?>
                             <!-- If logged in, add to cart functionality -->
-                            <button class="add-to-cart" onclick="addToCart(<?php echo $row['id']; ?>)">Add to Cart</button>
+                            <button class="add-to-cart"
+                                onclick="window.location.href='add_to_cart.php?id=<?php echo $row['id']; ?>'">
+                                Add to Cart
+                            </button>
                         <?php } else { ?>
                             <!-- If not logged in, show login modal -->
                             <button class="add-to-cart" onclick="openLoginModal()">Add to Cart</button>
@@ -86,9 +89,27 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 
-    <!-- Add this script for modal behavior and toggling between forms -->
     <script>
+        // JavaScript functions for modal behavior
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
 
+        function closeModals() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function toggleModal() {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            if (loginForm.style.display === 'block') {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+            } else {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+            }
+        }
     </script>
 </body>
 

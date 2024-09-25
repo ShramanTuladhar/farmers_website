@@ -37,96 +37,24 @@ $result = mysqli_query($conn, $query);
                         <p><?php echo $row['description']; ?></p>
                         <p class="price">$<?php echo number_format($row['price'], 2); ?></p>
 
-                        <!-- Check if the user is logged in -->
-                        <?php if (isset($_SESSION['user_id'])) { ?>
-                            <!-- If logged in, add to cart functionality -->
-                            <button class="add-to-cart" onclick="addToCart(<?php echo $row['id']; ?>)">Add to Cart</button>
-                        <?php } else { ?>
-                            <!-- If not logged in, show login modal -->
-                            <button class="add-to-cart" onclick="openLoginModal()">Add to Cart</button>
-                        <?php } ?>
+                        <button class="add-to-cart" onclick="redirectToLogin()">Add to Cart</button>
+
                     </div>
-                <?php } ?>
+                <?php } ?>  
             </div>
         </section>
     </div>
 
     <?php include_once('footer.php'); ?>
 
-    <!-- Login/Signup Modal (hidden initially) -->
-    <div id="loginModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close" onclick="closeModals()">&times;</span>
-
-            <!-- Login Form -->
-            <form id="loginForm" action="login.php" method="POST" style="display: block;">
-                <h2>Login</h2>
-                <label for="login-username">Username:</label>
-                <input type="text" id="login-username" name="username" required>
-                <label for="login-password">Password:</label>
-                <input type="password" id="login-password" name="password" required>
-                <button type="submit" name='login'>Login</button>
-                <p style="text-align: center;">Don't have an account? <a href="javascript:void(0);"
-                        onclick="toggleModal()">Sign Up</a></p>
-            </form>
-
-            <!-- Signup Form -->
-            <form id="signupForm" action="signup.php" method="POST" style="display: none;">
-                <h2>Sign Up</h2>
-                <label for="signup-username">Username:</label>
-                <input type="text" id="signup-username" name="username" required>
-                <label for="signup-email">Email:</label>
-                <input type="email" id="signup-email" name="email" required>
-                <label for="signup-password">Password:</label>
-                <input type="password" id="signup-password" name="password" required>
-                <button type="submit" name='signup'>Sign Up</button>
-                <p style="text-align: center;">Already have an account? <a href="javascript:void(0);"
-                        onclick="toggleModal()">Login</a></p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Add this script for modal behavior and toggling between forms -->
     <script>
-        var loginModal = document.getElementById("loginModal");
-        var loginForm = document.getElementById("loginForm");
-        var signupForm = document.getElementById("signupForm");
-
-        // Show the login modal when "Add to Cart" is pressed by a non-logged-in user
-        function openLoginModal() {
-            loginModal.style.display = "block";
-            loginForm.style.display = "block"; // Show login form by default
-            signupForm.style.display = "none"; // Hide signup form by default
+        // Redirect to login page with an alert message
+        function redirectToLogin() {
+            alert("You need to login first.");
+            window.location.href = "index.php"; // Redirect to the index or login page
         }
 
-        // Toggle between Login and Signup forms
-        function toggleModal() {
-            if (loginForm.style.display === "block") {
-                loginForm.style.display = "none";
-                signupForm.style.display = "block";
-            } else {
-                loginForm.style.display = "block";
-                signupForm.style.display = "none";
-            }
-        }
-
-        // Close modals when clicking on the close button or outside the modal
-        function closeModals() {
-            loginModal.style.display = "none";
-        }
-
-        // Close modal when clicking outside of it
-        window.onclick = function (event) {
-            if (event.target == loginModal) {
-                closeModals();
-            }
-        }
-
-        // Example function to handle "Add to Cart" functionality
-        function addToCart(productId) {
-            // Implement your add-to-cart logic here, such as sending an AJAX request to the server
-            console.log("Product added to cart:", productId);
-        }
+        // Remove the addToCart function as it's no longer needed
     </script>
 </body>
 

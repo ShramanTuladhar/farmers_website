@@ -410,10 +410,6 @@ button {
   transition: background-color 0.3s; /* Smooth transition */
 }
 
-button:hover {
-  background-color: #218838; /* Darker green on hover */
-}
-
 @media (max-width: 600px) {
   .form-container {
     width: 90%; /* Responsive width for smaller screens */
@@ -663,10 +659,6 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #0056b3;
-}
-
 .total-price {
   font-size: 1.5em;
   color: #d9534f;
@@ -683,4 +675,51 @@ button:hover {
 .cart-link:focus,
 .cart-link:hover {
   color: var(--hover-color); /* Prevent color change on click or hover */
+}
+/* Style for the search form container */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the search bar and button */
+  margin-bottom: 20px;
+  position: relative; /* Make the container relative for absolute positioning */
+}
+
+/* Style for the search input */
+.search-bar {
+  padding: 10px 40px 10px 10px; /* Add padding for left side to avoid overlap with icon */
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Rounded corners for the input */
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+/* Focused state for the search bar */
+.search-bar:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Style for the search button */
+.search-btn {
+  position: absolute; /* Position button absolutely */
+  right: -10px; /* Align to the right */
+  top: 50%; /* Center vertically */
+  transform: translateY(-70%); /* Adjust for vertical centering */
+  background-color: transparent; /* Make the background transparent */
+  border: none; /* Remove border */
+  cursor: pointer;
+}
+
+/* Style for the search icon */
+.search-btn i {
+  color: #007bff; /* Change icon color */
+  font-size: 16px; /* Size of the icon */
+}
+
+/* Hover effect for the search button */
+.search-btn:hover i {
+  background-color: transparent;
+  color: #0056b3; /* Change icon color on hover */
 }
