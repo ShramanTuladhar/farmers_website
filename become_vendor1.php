@@ -16,7 +16,7 @@
 
     <div class="main-content">
         <?php
-        include_once('left1.php'); // Include left menu
+        include_once('left.php'); // Include left menu
         ?>
 
         <section class="center-content">

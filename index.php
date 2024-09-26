@@ -18,7 +18,6 @@ $reviewsQuery = "
 $reviewsResult = mysqli_query($conn, $reviewsQuery);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,17 +32,14 @@ $reviewsResult = mysqli_query($conn, $reviewsQuery);
 <body>
     <?php include_once('header.php'); ?>
 
-
     <div class="main-content">
         <?php include_once('left.php'); ?>
 
         <section class="center-content">
             <img src="farmers.jpeg" alt="Large Central Image" class="large-image">
             <div class="features">
-
                 <h2>Featured Products</h2>
                 <div class="featured-products">
-
                     <?php
                     // Loop through the products and display them
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -61,7 +57,6 @@ $reviewsResult = mysqli_query($conn, $reviewsQuery);
                 </div>
             </div>
         </section>
-
 
         <aside class="right-sidebar">
             <form action="index.php" method="GET" class="search-form">
@@ -85,10 +80,13 @@ $reviewsResult = mysqli_query($conn, $reviewsQuery);
                     </div>
                 <?php } ?>
             </div>
+            
+            <!-- Login and Signup Buttons -->
+            <div class="auth-buttons">
+                <button onclick="openLoginModal()" class="btn">Login</button>
+                <button onclick="openSignupModal()" class="btn">Sign Up</button>
+            </div>
         </aside>
-    </div>
-
-    </aside>
     </div>
 
     <?php include_once('footer.php'); ?>
@@ -106,7 +104,6 @@ $reviewsResult = mysqli_query($conn, $reviewsQuery);
                 <input type="password" id="password" name="password" required>
                 <button type="submit" name='signup'>Sign Up</button>
             </form>
-
         </div>
     </div>
 
@@ -128,15 +125,12 @@ $reviewsResult = mysqli_query($conn, $reviewsQuery);
                     Don't have an account?
                     <a href="javascript:void(0);" onclick="toggleModal()">Sign Up</a>
                 </p>
-
             </form>
         </div>
     </div>
 
-
     <!-- JavaScript for modal functionality -->
-    <script scr="script.js">
-    </script>
+    <script src="script.js"></script>
     <script>
         var signupModal = document.getElementById("signupModal");
         var loginModal = document.getElementById("loginModal");
@@ -172,11 +166,6 @@ $reviewsResult = mysqli_query($conn, $reviewsQuery);
                 closeModals();
             }
         }
-        function openLoginModal() {
-            loginModal.style.display = "block";
-            signupModal.style.display = "none"; // Hide signup modal
-        }
-
     </script>
 </body>
 
