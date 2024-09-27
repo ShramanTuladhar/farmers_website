@@ -1,6 +1,40 @@
 <?php
+// Start session
+session_start();
+
 // Connect to the database
-include 'config.php'; // Your database connection
+include 'config.php';
+
+// Handle login form submission
+if (isset($_POST['login'])) {
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+    // Fetch user data from the database
+    $query = "SELECT * FROM users WHERE username = '$username'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) == 1) {
+        $user = mysqli_fetch_assoc($result);
+
+        // Verify the password
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['user_logged_in'] = true; // Set a flag for login status
+
+            // Redirect to the dashboard or another page
+            header("Location: main_index.php");
+            exit();
+        } else {
+            // Incorrect password
+            $_SESSION['error'] = "Invalid password";
+        }
+    } else {
+        // User not found
+        $_SESSION['error'] = "User not found";
+    }
+}
 
 // Fetch all products from the database
 $query = "SELECT * FROM products";
@@ -16,6 +50,9 @@ $reviewsQuery = "
     LIMIT 3
 ";
 $reviewsResult = mysqli_query($conn, $reviewsQuery);
+
+// Check if there is an error to display
+$showLoginModal = isset($_SESSION['error']);
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +117,7 @@ $reviewsResult = mysqli_query($conn, $reviewsQuery);
                     </div>
                 <?php } ?>
             </div>
-            
+
             <!-- Login and Signup Buttons -->
             <div class="auth-buttons">
                 <button onclick="openLoginModal()" class="btn">Login</button>
@@ -103,20 +140,31 @@ $reviewsResult = mysqli_query($conn, $reviewsQuery);
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
                 <button type="submit" name='signup'>Sign Up</button>
+                <p style="text-align: center;">
+                    Have an account?
+                    <a href="javascript:void(0);" onclick="toggleModal()">Login</a>
+                </p>
             </form>
         </div>
     </div>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="modal" style="display: block;">
+    <div id="loginModal" class="modal" style="display: none;">
         <div class="modal-content">
             <span class="close" onclick="closeModals()">&times;</span>
-            <form action="login.php" method="POST">
+            <form action="index.php" method="POST">
                 <label for="login-username">Username:</label>
                 <input type="text" id="login-username" name="username" required>
                 <label for="login-password">Password:</label>
                 <input type="password" id="login-password" name="password" required>
-                <button type="submit" name='login'>Login</button>
+
+                <!-- Display error message if it exists -->
+                <?php if (isset($_SESSION['error'])) { ?>
+                    <p class="error-message" style="color: red;"><?php echo $_SESSION['error']; ?></p>
+                    <?php unset($_SESSION['error']); // Clear the error after displaying ?>
+                <?php } ?>
+
+                <button type="submit" name="login">Login</button>
                 <p style="text-align: center;">
                     <a href="forgot_password.php" style="color: #007BFF; text-decoration: underline;">Forgot
                         Password?</a>
@@ -159,6 +207,11 @@ $reviewsResult = mysqli_query($conn, $reviewsQuery);
                 openSignupModal();
             }
         }
+
+        // Automatically open the login modal if there's an error
+        <?php if ($showLoginModal) { ?>
+            openLoginModal();
+        <?php } ?>
 
         // Close modals when clicking outside
         window.onclick = function (event) {

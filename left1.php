@@ -1,5 +1,8 @@
 <aside class="left-menu">
     <ul>
+        <li><button onclick="history.back()" style="background-color:#c49c18;">
+                < </button>
+        </li>
         <li><a href="main_index.php">Home</a></li>
         <li><a href="become_vendor.php">Become A Vendor</a></li>
         <li>

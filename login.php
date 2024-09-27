@@ -42,10 +42,16 @@ if (isset($_POST['login'])) {
             header("Location: main_index.php");
             exit; // Always exit after a redirect
         } else {
-            echo "Invalid password. Please try again.";
+            // If password is incorrect, store the error in the session
+            $_SESSION['error'] = "Invalid password. Please try again.";
+            header("Location: index.php"); // Redirect back to the login page
+            exit;
         }
     } else {
-        echo "No user found with that username.";
+        // If username is not found, store the error in the session
+        $_SESSION['error'] = "No user found with that username.";
+        header("Location: index.php"); // Redirect back to the login page
+        exit;
     }
     $stmt->close();
 }

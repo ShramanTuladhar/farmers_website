@@ -5,11 +5,11 @@
             <a href="#">Terms of Service</a>
         </div>
         <div class="social-login">
-            <span style="font-size: 18px; margin-right: 10px;">Login with</span>
-            <a href="/auth/facebook">
+            <span style="font-size: 18px; margin-right: 10px;">Join us</span>
+            <a href="https://www.facebook.com/profile.php?id=100008231673810">
                 <img src="fb_logo.png" alt="Facebook Login">
             </a>
-            <a href="/auth/google">
+            <a href="https://google.com/">
                 <img src="google_logo.png" alt="Google Login">
             </a>
         </div>
